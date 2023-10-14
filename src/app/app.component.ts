@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myApp';
+
+  num1 = 0;
+  num2 = 0;
+  ans = 0;
+
+  day = 'monday';
+
+  total() {
+    this.ans = this.num1 + this.num2;
+  }
+
 }
