@@ -1,18 +1,15 @@
-<input type="number" [(ngModel)]="num1" >
-<input type="number" [(ngModel)]="num2">
+<input #newTaskElem type="text" [(ngModel)]="newTask" (keyup)="errorMsg = '';"> <br>
+<small>{{errorMsg}}</small> <br>
+<button *ngIf="!isEdit" (click)="add(newTaskElem.value)">Add Task</button> 
+<button *ngIf="isEdit" (click)="save()">Edit Task</button> 
+<button *ngIf="isEdit" (click)="cancelEdit()">Cancel</button> 
 
-<button (click)="total()">Add</button>
+<br>
 
-<div>
-    Ans is more than 100 < {{ans}}
-</div>
-
-<div>
-    Ans is less than 100 > {{ans}}
-</div>
-
-<div [ngSwitch]="day">
-    <div *ngSwitchCase="'monday'">Today is monday</div>
-    <div *ngSwitchCase="'sunday'">Today is sunday</div>
-</div>
-
+<ol>
+    <li *ngFor="let task of todo;index as i">
+        {{task}} 
+        <button (click)="remove(i)">DEL</button>
+        <button (click)="edit(i)">EDIT</button>
+    </li>
+</ol>

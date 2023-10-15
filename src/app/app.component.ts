@@ -7,14 +7,43 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  num1 = 0;
-  num2 = 0;
-  ans = 0;
+  errorMsg = '';
 
-  day = 'monday';
+  newTask = '';  
 
-  total() {
-    this.ans = this.num1 + this.num2;
+  todo: string[] = []; 
+
+  isEdit = false;
+  currentTaskIndex = 0;
+  
+  add(newTask: string) {
+    if (newTask.trim() != '') {
+      this.todo.push(newTask);
+      this.newTask = ''
+    } else {
+      this.errorMsg = 'Please enter value'
+    }
   }
 
-}
+  remove(index: number) {
+    this.todo.splice(index, 1);
+  }
+
+  edit(index: number) {
+    this.isEdit = true;
+    this.currentTaskIndex = index;
+    this.newTask = this.todo[index];
+  }
+
+  save() { 
+    this.todo[this.currentTaskIndex] = this.newTask;
+    this.isEdit = false;
+    this.newTask = '';
+  }
+  
+  cancelEdit() {
+    this.isEdit = false;
+    this.newTask = '';
+  }
+}  
+ 
