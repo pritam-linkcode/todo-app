@@ -7,43 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  errorMsg = '';
+  num1: number = 10;
+  num2: number = 20;
 
-  newTask = '';  
+  total: number = 0;
 
-  todo: string[] = []; 
-
-  isEdit = false;
-  currentTaskIndex = 0;
-  
-  add(newTask: string) {
-    if (newTask.trim() != '') {
-      this.todo.push(newTask);
-      this.newTask = ''
-    } else {
-      this.errorMsg = 'Please enter value'
-    }
-  }
-
-  remove(index: number) {
-    this.todo.splice(index, 1);
-  }
-
-  edit(index: number) {
-    this.isEdit = true;
-    this.currentTaskIndex = index;
-    this.newTask = this.todo[index];
-  }
-
-  save() { 
-    this.todo[this.currentTaskIndex] = this.newTask;
-    this.isEdit = false;
-    this.newTask = '';
+  add() {
+    this.total = this.num1 + this.num2;
   }
   
-  cancelEdit() {
-    this.isEdit = false;
-    this.newTask = '';
-  }
 }  
  
