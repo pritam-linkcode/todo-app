@@ -7,14 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  num1: number = 10;
-  num2: number = 20;
-
-  total: number = 0;
-
-  add() {
-    this.total = this.num1 + this.num2;
-  }
   
 }  
  
