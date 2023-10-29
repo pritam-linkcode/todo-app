@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -16,12 +17,14 @@ export class AddEmployeeComponent {
 
   constructor(
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {} 
 
   addEmp() {
     console.log(this.empForm.value);
-    
+    this.userService.employees.push(this.empForm.value);
+    this.router.navigate(['dashboard'])
   }
 
 
